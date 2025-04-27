@@ -148,12 +148,12 @@ $(document).on("click", 'a[href^="#"]', function (event) {
   });
 
   // Start the timer when the quiz loads
-  $(document).ready(function () {
-    startTimer();
-  });
+  //$(document).ready(function () {
+  //  startTimer();
+  // });
 
   // Display initial question
-  displayNext();
+  // displayNext();
 
   // Click handler for the 'next' button
   $("#next").on("click", function (e) {
@@ -832,6 +832,17 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     const resultsWindow = window.open("", "_blank");
     resultsWindow.document.write(html);
     resultsWindow.document.close();
+  }
+
+  // Click handler for 'Start Quiz' button on Info Page
+  const startButton = document.getElementById('startQuizButton');
+  if (startButton) {
+    startButton.addEventListener('click', function () {
+      document.getElementById('infoPage').style.display = 'none';
+      document.getElementById('container').style.display = 'block';
+      startTimer();
+      displayNext(); // Display the first question when the page loads
+    });
   }
 })();
 
