@@ -259,6 +259,26 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     return radioList;
   }
 
+  
+  // Check if all questions are answered
+  function allQuestionsAnswered() {
+    for (let i = 0; i < questions.length; i++) {
+      if (isNaN(selections[i])) {
+        return false; // Found at least one unanswered
+      }
+    }
+    return true; // All answered
+  }
+  
+  // Alert if any question is unanswered
+  function checkUnansweredQuestions() {
+    if (!allQuestionsAnswered()) {
+      swal("Please answer all questions before submitting!", "Choose the best option for each question.", "warning");
+      return true; // Unanswered questions found
+    }
+    return false; // All questions answered
+  }
+
   // Updates the status of the question button based on user selection to answered or unanswered
   function updateQuestionButtonStatus(index) {
     const btn = document.querySelector(`.question-btn[data-question="${index + 1}"]`);
@@ -459,6 +479,44 @@ $(document).on("click", 'a[href^="#"]', function (event) {
           $("#next").show();
         }
       } else {
+        // When reaches the end of the quiz
+        // Check for unanswered questions
+        // If any question is unanswered, do not proceed to the score display
+        const unansweredQuestions = checkUnansweredQuestions(); // (returns true or false)
+        console.log("Unanswered questions:", unansweredQuestions);
+
+        if (unansweredQuestions) {
+          // Ask the user
+          swal({
+            title: "Unanswered Questions!",
+            text: "Some questions are unanswered. Are you sure you want to submit?",
+            icon: "warning",
+            buttons: {
+              cancel: "Go Back",
+              confirm: "Submit Anyway"
+            },
+            dangerMode: true,
+          }).then((willSubmit) => {
+            if (willSubmit) {
+              // User chooses to submit anyway
+              var scoreElem = displayScore();
+              quiz.append(scoreElem).fadeIn();
+              $("#next").hide();
+              $("#prev").hide();
+              $("#start").show();
+
+              $("#progress-bar").css("width", "100%");
+              $("#progress-text").text("100%");
+            } else {
+              // User chooses to go back → do nothing (stay on quiz)
+              return;
+            }
+          });
+
+          return; // Important: prevent immediate submit until user answers the alert
+        }
+
+        // If no unanswered questions → directly submit
         var scoreElem = displayScore();
         quiz.append(scoreElem).fadeIn();
         $("#next").hide();
@@ -513,6 +571,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     for (let i = 0; i < selections.length; i++) {
 
       if (selections[i] === questions[i].correctAnswer) {
+        console.log("Correct answer:", questions[i].correctAnswer);
 
         numCorrect++;
 
@@ -895,5 +954,6 @@ $(document).on("click", 'a[href^="#"]', function (event) {
       displayNext(); // Display the first question when the page loads
     });
   }
+
 })();
 
