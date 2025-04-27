@@ -361,7 +361,13 @@ button {
   background-color: #d0d0d0;
 }
 
-.question-btn.active {
+/* Unanswered question */
+.question-btn.unanswered {
+  background-color: #e0e0e0;
+}
+
+/* Answered question */
+.question-btn.answered {
   background-color: #4CAF50;
   color: white;
 }

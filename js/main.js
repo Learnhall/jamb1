@@ -259,10 +259,25 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     return radioList;
   }
 
+  // Updates the status of the question button based on user selection to answered or unanswered
+  function updateQuestionButtonStatus(index) {
+    const btn = document.querySelector(`.question-btn[data-question="${index + 1}"]`);
+    if (!btn) return;
+  
+    if (!isNaN(selections[index])) {
+      btn.classList.remove('unanswered');
+      btn.classList.add('answered');
+    } else {
+      btn.classList.remove('answered');
+      btn.classList.add('unanswered');
+    }
+  }  
+
   // Reads the user selection and pushes the value to an array
   function choose() {
     selections[questionCounter] = +$('input[name="answer"]:checked').val();
     updateSessionStorage();
+    updateQuestionButtonStatus(questionCounter);
   }
 
   // Keydown listener for keyboard navigation (A-Z, Enter, Arrow keys disabled)
@@ -846,7 +861,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     updateSessionStorage();
     displayNext();
   }
-  
+
   // Generate 60 quiz question buttons
   function generateQuestionButtons() {
     const totalQuestions = questions.length; // Total number of questions
@@ -855,7 +870,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
   
     for (let i = 1; i <= totalQuestions; i++) {
         const btn = document.createElement('button');
-        btn.className = 'question-btn';
+        btn.className = 'question-btn unanswered';
         btn.dataset.question = i; // Store the question number
         btn.textContent = i; // Display number
   
