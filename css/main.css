@@ -323,9 +323,8 @@ button {
     font-size: 16px;
 }
 
-/* Quiz overview sidebar */
 #quiz-overview {
-  width: 220px;
+  width: 640px;
   background: #f9f9f9;
   padding: 20px;
   border-right: 1px solid #ddd;
@@ -336,7 +335,7 @@ button {
 
 #quiz-overview h3 {
   font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #333;
   text-align: center;
 }
