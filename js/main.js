@@ -834,6 +834,28 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     resultsWindow.document.close();
   }
 
+    // Generate 60 quiz question buttons
+  function generateQuestionButtons() {
+    const totalQuestions = questions.length; // Total number of questions
+    const questionButtonsContainer = document.getElementById('question-buttons');
+    questionButtonsContainer.innerHTML = ''; 
+  
+    for (let i = 1; i <= totalQuestions; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'question-btn';
+        btn.dataset.question = i; // Store the question number
+        btn.textContent = i; // Display number
+  
+        // Add click event for each button
+        btn.addEventListener('click', function () {
+          jumpToQuestion(i);
+        });
+  
+        questionButtonsContainer.appendChild(btn);
+      }
+  }
+
+  generateQuestionButtons();
   // Click handler for 'Start Quiz' button on Info Page
   const startButton = document.getElementById('startQuizButton');
   if (startButton) {
