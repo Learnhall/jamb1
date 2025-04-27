@@ -834,7 +834,20 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     resultsWindow.document.close();
   }
 
-    // Generate 60 quiz question buttons
+  function jumpToQuestion(questionNumber) {
+    // Check if the question number is valid
+    if (questionNumber < 1 || questionNumber > questions.length) {
+      console.error("Invalid question number:", questionNumber);
+      return;
+    }
+
+    // Update the question counter and display the selected question
+    questionCounter = questionNumber - 1; // Adjust for zero-based index
+    updateSessionStorage();
+    displayNext();
+  }
+  
+  // Generate 60 quiz question buttons
   function generateQuestionButtons() {
     const totalQuestions = questions.length; // Total number of questions
     const questionButtonsContainer = document.getElementById('question-buttons');
