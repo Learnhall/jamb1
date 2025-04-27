@@ -23,7 +23,6 @@
     overflow: hidden;
 }
 .topnav a {
-    float: left;
     display: inline-block;
     color: white;
     text-align: center;
@@ -322,4 +321,47 @@ button {
     color: black;
     font-weight: bold;
     font-size: 16px;
+}
+
+/* Quiz overview sidebar */
+#quiz-overview {
+  width: 220px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  height: 100vh; /* Full viewport height */
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#quiz-overview h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+#question-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns layout */
+  gap: 8px;
+}
+
+.question-btn {
+  padding: 8px;
+  border: none;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.question-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.question-btn.active {
+  background-color: #4CAF50;
+  color: white;
 }

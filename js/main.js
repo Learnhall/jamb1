@@ -840,6 +840,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
     startButton.addEventListener('click', function () {
       document.getElementById('infoPage').style.display = 'none';
       document.getElementById('container').style.display = 'block';
+      document.getElementById('quiz-overview').style.display = 'block';
       startTimer();
       displayNext(); // Display the first question when the page loads
     });
