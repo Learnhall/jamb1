@@ -458,12 +458,12 @@ $(document).on("click", 'a[href^="#"]', function (event) {
         var nextQuestion = createQuestionElement(questionCounter);
         quiz.append(nextQuestion).fadeIn();
 
-        // Update progress bar
-        var progress = (questionCounter / NumberOfQuestion) * 100; // Assuming there are 200 questions
-        $("#progress-bar").css("width", progress + "%");
-        $("#progress-text").text(
-          Math.floor(progress) + (progress % 1 >= 0.5 ? ".5%" : ".0%")
-        );
+        // Update the question progress status
+        var answeredCount = selections.filter((s) => s !== undefined).length;
+        var totalQuestions = NumberOfQuestion;
+        $("#progress-text").text(answeredCount + "/" + totalQuestions + " questions answered");
+
+        // Preserve previously selected answer for current question
         if (!isNaN(selections[questionCounter])) {
           $("input[value=" + selections[questionCounter] + "]").prop(
             "checked",
