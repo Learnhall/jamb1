@@ -929,7 +929,12 @@ $(document).on("click", 'a[href^="#"]', function (event) {
   
     for (let i = 1; i <= totalQuestions; i++) {
         const btn = document.createElement('button');
-        btn.className = 'question-btn unanswered';
+        if (selections[i - 1] !== undefined) {
+          btn.className = 'question-btn answered';
+        } else {
+          btn.className = 'question-btn unanswered';
+        }
+        
         btn.dataset.question = i; // Store the question number
         btn.textContent = i; // Display number
   
