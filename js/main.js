@@ -955,6 +955,10 @@ $(document).on("click", 'a[href^="#"]', function (event) {
       document.getElementById('infoPage').style.display = 'none';
       document.getElementById('container').style.display = 'block';
       document.getElementById('quiz-overview').style.display = 'block';
+      // Hide nav header
+      document.getElementById("nav-header").style.display = "none";
+      // Show quiz header (B)
+      document.getElementById("quiz-header").style.display = "block";
       startTimer();
       displayNext(); // Display the first question when the page loads
     });

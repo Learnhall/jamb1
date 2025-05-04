@@ -31,23 +31,31 @@
     </style>
   </head>
   <!-- Navbar SECTION -->
-  <div class="topnav" id="myTopnav">
-    <a href="#home"
-      ><i class="fa fa-home site-nav--icon"></i>Launch English Home</a
-    >
-    <a href="articlesmain.html"
-      ><i class="fa fa-info site-nav--icon"></i>Articles</a
-    >
-    <!--<a href="#podcasts"><i class="fa fa-briefcase site-nav--icon"></i>Podcasts</a>-->
-    <a href="#tutorials"
-      ><i class="fa fa-briefcase site-nav--icon"></i>Tutorials</a
-    >
-    <a href="#contact"><i class="fa fa-envelope site-nav--icon"></i>Contact</a>
-    <!--hamburger menu when screen shrinks-->
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()"
-      >&#9776;</a
-    >
+  <div id="nav-header" style="display: block;" aria-label="Nav Header">
+    <div class="topnav" id="myTopnav">
+      <a href="#home"
+        ><i class="fa fa-home site-nav--icon"></i>Launch English Home</a
+      >
+      <a href="articlesmain.html"
+        ><i class="fa fa-info site-nav--icon"></i>Articles</a
+      >
+      <!--<a href="#podcasts"><i class="fa fa-briefcase site-nav--icon"></i>Podcasts</a>-->
+      <a href="#tutorials"
+        ><i class="fa fa-briefcase site-nav--icon"></i>Tutorials</a
+      >
+      <a href="#contact"><i class="fa fa-envelope site-nav--icon"></i>Contact</a>
+      <!--hamburger menu when screen shrinks-->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+        >&#9776;</a
+      >
+    </div>
   </div>
+
+  <div id="quiz-header" style="display: none;" aria-label="Quiz Header">
+    <h1 style="margin: 0;">JAMB 1</h1>
+    <div id="timer" style="font-size: 20px; font-weight: bold; color: red;"></div>
+  </div>
+
   <body>
      <!-- Info Page -->
     <div id="infoPage">
@@ -66,6 +74,7 @@
       </div>
     </div>
 
+    <!-- Quiz Content -->
     <div id="quiz-layout" style="display: flex;">
       <nav id="quiz-overview" aria-label="Quiz Overview" style="display:none;">
         <h3>Quiz Overview</h3>
@@ -73,20 +82,13 @@
           <!-- JavaScript will generate buttons here -->
         </div>
       </nav>  
-  
+
       <div id="container" style="display:none;">    
         <div class="title">
-          <h1>JAMB 1</h1>
+          <!-- Removed JAMB 1 and timer from here -->
           <h3>60 Questions</h3>
-          <div
-            id="timer"
-            style="font-size: 20px; font-weight: bold; color: red"
-          ></div>
-          <div
-            id="progress-container"
-          >
+          <div id="progress-container">
             <span id="progress-text"> </span>
-            <!-- This will display the percentage -->
           </div>
           <p id="qType"></p>
         </div>
@@ -105,8 +107,6 @@
             >
               Your browser does not support the audio element.
             </audio>
-            <!-- <audio src="/audio/Button-Down-Sound.ogg" controls>
-              Your browser does not support the audio element. </audio> -->
           </div>
           <p id="content"></p>
           <h6><i></i></h6>
@@ -117,6 +117,7 @@
         <div class="button" id="start" data-focusable tabindex="0"><a href="#">Start Over</a></div>
       </div>
     </div>
+
 
     <!--this is for the NaN quiz alert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
