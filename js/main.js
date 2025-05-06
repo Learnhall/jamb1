@@ -74,7 +74,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
       timerDisplay.text(
         `${hours < 10 ? "0" : ""}${hours}:${
           minutes < 10 ? "0" : ""
-        }${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
+        }${minutes}:${seconds < 10 ? "0" : ""}${seconds} Remining`
       );
 
       // 1-hour mark
@@ -957,7 +957,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
       document.getElementById('quiz-overview').style.display = 'block';
       // Hide nav header
       document.getElementById("nav-header").style.display = "none";
-      // Show quiz header (B)
+      // Show quiz header
       document.getElementById("quiz-header").style.display = "block";
       startTimer();
       displayNext(); // Display the first question when the page loads
