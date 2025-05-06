@@ -71,11 +71,13 @@ $(document).on("click", 'a[href^="#"]', function (event) {
       var seconds = currentTime % 60;
 
       // Format and display the timer
-      timerDisplay.text(
-        `${hours < 10 ? "0" : ""}${hours}:${
-          minutes < 10 ? "0" : ""
-        }${minutes}:${seconds < 10 ? "0" : ""}${seconds} Remining`
-      );
+      timerDisplay.html(
+        `<i class="fa fa-clock-o" aria-hidden="true"></i> ${hours
+          .toString()
+          .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")} Remaining`
+      );      
 
       // 1-hour mark
       if (currentTime === 60 * 60) {
