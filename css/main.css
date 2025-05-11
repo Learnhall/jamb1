@@ -147,14 +147,13 @@ button a:hover {
 
 #container {
     width:50%;
-    margin: 5% 20% 6% 23%;
+    margin: 5% 10% 6% 10%;
     padding: 0 10px 40px 10px;
     /*background-color: #1E90FF;*/
-    border:4px solid #4e90ec;/*#B0E0E6;*/
     border-radius:5px;
     /*color: #FFFFFF;*/
     font-weight: bold;
-    box-shadow: 5px 5px 5px #888;
+    flex: 3;
 }
 
 #containerInner {
@@ -328,6 +327,14 @@ button {
   top: 2px;
 }
 
+#quiz-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 3px;
+    height: 100vh; /* Full viewport height */
+}
+
 #progress-container {
     display: flex;
     position: relative;
@@ -366,6 +373,7 @@ button {
   height: 100vh; /* Full viewport height */
   overflow-y: auto;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
 #quiz-overview h3 {
