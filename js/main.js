@@ -463,7 +463,7 @@ $(document).on("click", 'a[href^="#"]', function (event) {
         // Update the question progress status
         var answeredCount = selections.filter((s) => s !== undefined).length;
         var totalQuestions = NumberOfQuestion;
-        $("#progress-text").text(`${answeredCount}/${totalQuestions}`);
+        $("#progress-text").html(`✔ ${answeredCount}/${totalQuestions} completed`);
 
         // Preserve previously selected answer for current question
         if (!isNaN(selections[questionCounter])) {
